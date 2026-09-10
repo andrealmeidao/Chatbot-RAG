@@ -1,49 +1,49 @@
 # Chatbot RAG
 
 Chatbot inteligente para consulta de documentos corporativos. O projeto usa
-RAG (Retrieval-Augmented Generation) para encontrar informacoes relevantes na
-base de conhecimento da empresa e responder perguntas com mais contexto,
+RAG (Retrieval-Augmented Generation) para encontrar informações relevantes na
+base de conhecimento da empresa e responder a perguntas com mais contexto,
 agilidade e rastreabilidade.
 
 ## O problema no mercado
 
-Empresas acumulam manuais, politicas, FAQs, catalogos, relatorios e outros
-documentos importantes, mas essas informacoes normalmente ficam espalhadas em
+Empresas acumulam manuais, políticas, FAQs, catálogos, relatórios e outros
+documentos importantes, mas essas informações normalmente ficam espalhadas em
 pastas, sistemas internos e arquivos com formatos diferentes. Como resultado:
 
 - colaboradores gastam tempo procurando respostas;
 - equipes de suporte respondem as mesmas perguntas repetidamente;
-- informacoes importantes ficam dificeis de encontrar ou sao esquecidas;
+- informações importantes ficam difíceis de encontrar ou são esquecidas;
 - respostas podem variar entre pessoas e canais;
-- o conhecimento da empresa se torna dependente de poucos especialistas.
+- o conhecimento da empresa torna-se dependente de poucos especialistas.
 
 Esse problema reduz a produtividade, aumenta o tempo de atendimento e dificulta
-a padronizacao das operacoes. Um chatbot convencional, baseado apenas em
-respostas predefinidas, tambem tem dificuldade para acompanhar documentos que
-mudam com frequencia.
+a padronização das operações. Um chatbot convencional, baseado apenas em
+respostas predefinidas, também tem dificuldade para acompanhar documentos que
+mudam com frequência.
 
 ## A solução
 
 O Chatbot RAG transforma os documentos da empresa em uma base de conhecimento
-consultavel. Quando uma pessoa envia uma pergunta, o sistema:
+consultável. Quando uma pessoa envia uma pergunta, o sistema:
 
 1. interpreta a consulta;
 2. localiza os trechos mais relevantes nos documentos;
 3. monta uma resposta com base nesse contexto;
-4. registra historico e feedback para apoiar a melhoria do atendimento.
+4. registra histórico e feedback para apoiar a melhoria do atendimento.
 
-Assim, a empresa oferece acesso mais rapido ao proprio conhecimento sem exigir
-que cada usuario saiba em qual arquivo ou pasta procurar. O sistema tambem
+Assim, a empresa oferece acesso mais rápido ao próprio conhecimento sem exigir
+que cada usuário saiba em qual arquivo ou pasta procurar. O sistema também
 possui fallback local, permitindo respostas extrativas mesmo sem uma chave de
 API de LLM configurada.
 
 ## Principais funcionalidades
 
 - Consulta conversacional sobre documentos internos.
-- Busca semantica para encontrar conteudo relacionado a pergunta.
+- Busca semântica para encontrar conteúdo relacionado à pergunta.
 - Suporte a arquivos TXT, CSV, PDF e DOCX.
 - Upload de novos documentos pela API.
-- Historico de conversas por identificador.
+- Histórico de conversas por identificador.
 - Registro de feedback sobre as respostas.
 - Endpoint de analytics para acompanhar o uso.
 - Embeddings OpenAI ou processamento local como fallback.
@@ -52,36 +52,36 @@ API de LLM configurada.
 
 ### Backend
 
-- **Python 3.11:** linguagem principal da aplicacao.
-- **FastAPI:** criacao da API HTTP e dos endpoints do chatbot.
+- **Python 3.11:** linguagem principal da aplicação.
+- **FastAPI:** criação da API HTTP e dos endpoints do chatbot.
 - **Uvicorn:** servidor ASGI usado para executar a API.
-- **Pydantic:** validacao e tipagem dos dados recebidos pela API.
-- **FAISS:** indexacao e busca vetorial dos trechos de documentos.
-- **NumPy:** suporte ao processamento dos vetores numericos.
-- **SQLite:** persistencia de historico, feedback e metricas.
+- **Pydantic:** validação e tipagem dos dados recebidos pela API.
+- **FAISS:** indexação e busca vetorial dos trechos de documentos.
+- **NumPy:** suporte ao processamento dos vetores numéricos.
+- **SQLite:** persistência de histórico, feedback e métricas.
 
 ### Inteligencia artificial e processamento de documentos
 
-- **Embeddings OpenAI:** representacao semantica dos documentos e perguntas.
-- **Embeddings locais:** alternativa para executar o projeto sem servico externo.
-- **Pipeline RAG:** carregamento, divisao, indexacao, recuperacao e geracao de
-	respostas.
+- **Embeddings OpenAI:** representação semântica dos documentos e perguntas.
+- **Embeddings locais:** alternativa para executar o projeto sem serviço externo.
+- **Pipeline RAG:** carregamento, divisão, indexação, recuperação e geração de
+  respostas.
 - **pypdf:** leitura de documentos PDF.
 - **python-docx:** leitura de documentos DOCX.
 
 ### Frontend e infraestrutura
 
 - **Vite:** servidor de desenvolvimento e empacotamento da interface web.
-- **JavaScript:** implementacao da experiencia do usuario.
-- **Docker e Docker Compose:** execucao reproduzivel do backend e frontend.
-- **GitHub Actions:** automacao da integracao continua.
+- **JavaScript:** implementação da experiência do usuário.
+- **Docker e Docker Compose:** execução reproduzível do backend e frontend.
+- **GitHub Actions:** automação da integração contínua.
 
 ## Estrutura do projeto
 
 ```text
 pyproject/
 ├── backend/
-│   ├── app/                 # API, configuracao e pipeline RAG
+│   ├── app/                 # API, configuração e pipeline RAG
 │   ├── data/docs/           # Documentos da base de conhecimento
 │   └── tests/               # Testes automatizados
 ├── frontend/                # Interface web em Vite
@@ -105,9 +105,9 @@ bash start.sh
 
 Sem `USER_LLM_API_KEY`, o projeto utiliza embeddings locais e respostas
 extrativas. Para configurar um provedor externo, copie `.env.example` para
-`.env` e preencha as variaveis `USER_LLM_*`.
+`.env` e preencha as variáveis `USER_LLM_*`.
 
-Tambem e possivel executar com Docker:
+Também é possível executar com Docker:
 
 ```bash
 cd pyproject
@@ -116,12 +116,12 @@ docker compose up --build
 
 ## API
 
-- `GET /health` - verifica a saude da aplicacao.
+- `GET /health` - verifica a saúde da aplicação.
 - `POST /chat` - envia uma pergunta ao chatbot.
-- `POST /upload` - adiciona documentos a base de conhecimento.
-- `GET /history/{conversation_id}` - consulta o historico de uma conversa.
+- `POST /upload` - adiciona documentos à base de conhecimento.
+- `GET /history/{conversation_id}` - consulta o histórico de uma conversa.
 - `POST /feedback` - registra feedback sobre uma resposta.
-- `GET /analytics` - consulta metricas de uso.
+- `GET /analytics` - consulta métricas de uso.
 
 ## Testes
 
@@ -130,7 +130,7 @@ cd pyproject/backend
 python -m pytest -q
 ```
 
-## Documentacao adicional
+## Documentação adicional
 
 - [Design do chatbot RAG](pyproject/CHATBOT_RAG_DESIGN.md)
 - [Guia operacional](pyproject/README.md)
