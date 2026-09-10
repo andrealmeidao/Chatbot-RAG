@@ -1,46 +1,55 @@
 # Chatbot RAG
 
-Chatbot que responde perguntas com base em documentos da empresa (RAG: retrieval + geracao).
+Chatbot que responde a perguntas com base em documentos da empresa usando RAG
+(Retrieval-Augmented Generation, ou geração aumentada por recuperação).
 
-## Stack
+## Tecnologias
 
-- Backend: Python 3.11, FastAPI, FAISS, embeddings OpenAI (com fallback local)
-- Frontend: Vite
-- Persistencia: SQLite (historico, feedback, analytics)
+- **Backend:** Python 3.11, FastAPI, FAISS e embeddings da OpenAI, com fallback
+	local.
+- **Frontend:** Vite.
+- **Persistência:** SQLite para histórico, feedback e analytics.
 
-## Como rodar
+## Como executar
+
+### Instalação
 
 ```bash
-# Instalar dependencias do backend
+# Instalar as dependências do backend
 pip install --break-system-packages -r backend/requirements.txt
 
-# Instalar frontend
+# Instalar o frontend
 cd frontend
 npm install
 cd ..
+```
 
-# Subir API e interface
+### Inicialização
+
+```bash
+# Iniciar a API e a interface
 bash start.sh
 ```
 
 Sem `USER_LLM_API_KEY`, o sistema usa embeddings locais e respostas extrativas.
 
-Para usar OpenAI, copie `.env.example` e preencha as variaveis `USER_LLM_*`.
+Para usar a OpenAI, copie `.env.example` para `.env` e preencha as variáveis
+`USER_LLM_*`.
 
-## API
+## Endpoints da API
 
-- `GET /health`
-- `POST /chat`
-- `POST /upload`
-- `GET /history/{conversation_id}`
-- `POST /feedback`
-- `GET /analytics`
+- `GET /health`: verifica a saúde da aplicação.
+- `POST /chat`: envia uma pergunta ao chatbot.
+- `POST /upload`: envia documentos para a base de conhecimento.
+- `GET /history/{conversation_id}`: consulta o histórico de uma conversa.
+- `POST /feedback`: registra feedback sobre uma resposta.
+- `GET /analytics`: consulta as métricas de uso.
 
 ## Testes
 
 ```bash
 cd backend
-python3 -m pytest -q
+python -m pytest -q
 ```
 
 ## Docker
