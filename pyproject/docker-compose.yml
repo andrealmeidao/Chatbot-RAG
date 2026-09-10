@@ -1,0 +1,12 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      USER_LLM_API_KEY: ${USER_LLM_API_KEY:-}
+      USER_LLM_BASE_URL: ${USER_LLM_BASE_URL:-https://api.openai.com/v1}
+      USER_LLM_MODEL: ${USER_LLM_MODEL:-gpt-3.5-turbo}
+      DATA_DIR: /app/backend/data
+    volumes:
+      - ./backend/data:/app/backend/data

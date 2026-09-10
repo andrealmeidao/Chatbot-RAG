@@ -1,0 +1,6 @@
+Horario de Funcionamento
+
+O suporte funciona de segunda a sexta, das 9h as 18h, horario de Brasilia.
+Aos sabados o atendimento e das 9h as 13h.
+Domingos e feriados nacionais nao ha atendimento humano, mas o chatbot RAG permanece disponivel 24/7.
+O prazo de resposta por e-mail e de ate 1 dia util.
