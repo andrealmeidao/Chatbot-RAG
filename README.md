@@ -22,7 +22,7 @@ a padronizacao das operacoes. Um chatbot convencional, baseado apenas em
 respostas predefinidas, tambem tem dificuldade para acompanhar documentos que
 mudam com frequencia.
 
-## A solucao
+## A solução
 
 O Chatbot RAG transforma os documentos da empresa em uma base de conhecimento
 consultavel. Quando uma pessoa envia uma pergunta, o sistema:
