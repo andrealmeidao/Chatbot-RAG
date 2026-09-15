@@ -1,3 +1,6 @@
+## AINDA EM FASE DE CORREÇÂO DE BUGS E REFINAMENTO DE CÓDIGO
+
+
 # Chatbot RAG
 
 Chatbot inteligente para consulta de documentos corporativos. O projeto usa
